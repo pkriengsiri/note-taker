@@ -15,7 +15,7 @@ app.listen(PORT, () => {
     console.log("Server is running on http://localhost:" + PORT);
 });
 
-// Sets up middleware to parse the request body
+// Sets up middleware to parse the request bodya
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -26,7 +26,9 @@ app.use(express.json());
 //   * GET `/notes` - Should return the `notes.html` file.
 
 // Creates the route to return the index.html file
-  * GET `*` - Should return the `index.html` file
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "/public/index.html"));
+});
 
 // * The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
 
