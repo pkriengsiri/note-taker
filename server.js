@@ -92,9 +92,9 @@ app.delete("/api/notes/:id", (req,res) => {
 })
 
 // Defines HTML routes
+
 // Creates the route to return the notes.html file
 app.get("/notes", function (req, res) {
-  console.log("Accessed notes route");
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
@@ -103,6 +103,5 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-// * The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
 
 
