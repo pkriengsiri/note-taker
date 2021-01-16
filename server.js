@@ -25,24 +25,26 @@ app.use(express.static(__dirname + "/public"));
 
 // Creates the API route for getting the stored notes
 app.get("/api/notes", function (req, res) {
-  // Send the db.json file
+  // Send the db.json file to the client
   res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
-//   * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+// Creates the API route for storing a posted note
 app.post("/api/notes", (req, res) => {
-  //   console.log(req.body);
+  // Empty array for storing previous notes plus the new note
   const storedNotes = [];
 
+  // Use fs to read the contents of db.json
   fs.readFile("./db/db.json", "utf8", (err, data) => {
+    // Throw an error if there is an error
     if (err) throw err;
 
-    const dataObject = JSON.parse(data);
+    const parsedDb = JSON.parse(data);
 
-    for (let i = 0; i < dataObject.length; i++) {
+    for (let i = 0; i < parsedDb.length; i++) {
       const note = {
-        title: dataObject[i].title,
-        text: dataObject[i].text,
+        title: parsedDb[i].title,
+        text: parsedDb[i].text,
         id: i,
       };
       storedNotes.push(note);
