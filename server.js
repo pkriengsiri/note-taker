@@ -1,3 +1,18 @@
+
+// 1. require express
+
+// 2. create an express instance
+
+// 3. define the port that you're going to use
+
+// 4. listen to that port
+
+// 5. middleware: setup express to parse the request body
+//     app.use(express.urlencoded({ extended: true }));
+//     app.use(express.json());
+
+// 6. add routes
+
 // * The following HTML routes should be created:
 
 //   * GET `/notes` - Should return the `notes.html` file.
