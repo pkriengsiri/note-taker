@@ -81,7 +81,6 @@ app.post("/api/notes", (req, res) => {
 // Creates the API route for deleting notes
 app.delete("/api/notes/:id", (req, res) => {
   const noteID = req.params.id;
-  console.log(noteID);
 
   fs.readFile("./db/db.json", "utf8", (err, data) => {
     if (err) throw err;
