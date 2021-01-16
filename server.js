@@ -18,16 +18,15 @@ app.listen(PORT, () => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Sets the webroot to the public folder
+// Sets the web root to the public folder
 app.use(express.static(__dirname + "/public"));
 
 // Defines API routes
+
 // Creates the API route for notes from the db
 app.get("/api/notes", function (req, res) {
-  fs.readFile("./db/db.json", "utf8", (err, data) => {
-    if (err) throw err;
-    res.sendFile(path.join(__dirname, "/db/db.json"));
-  });
+  // Send the db.json file
+  res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
 //   * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
