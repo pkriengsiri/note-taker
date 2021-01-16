@@ -10,6 +10,9 @@ const app = express();
 const PORT = 8080 || process.env.PORT;
 
 // 4. listen to that port
+app.listen(PORT, () => {
+    console.log("Server is running on http://localhost:"+PORT);
+});
 
 // 5. middleware: setup express to parse the request body
 //     app.use(express.urlencoded({ extended: true }));
