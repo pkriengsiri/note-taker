@@ -31,13 +31,42 @@ app.get("/api/notes", function (req, res) {
 });
 
 //   * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
-// app.post("/api/notes", (req, res) => {
-//     console.log(req.body);
-//     const db = fs.readFile('./db/db.json', 'utf8', (err, data) => {
-//         if (err) throw err;
-//         res.json(JSON.parse(data));
-//     res.send(true);
-// })
+app.post("/api/notes", (req, res) => {
+  //   console.log(req.body);
+  const storedNotes = [];
+
+  fs.readFile("./db/db.json", "utf8", (err, data) => {
+    if (err) throw err;
+
+    const dataObject = JSON.parse(data);
+
+    for (let i = 0; i < dataObject.length; i++) {
+      const note = {
+        title: dataObject[i].title,
+        text: dataObject[i].text,
+        id: i,
+      };
+      storedNotes.push(note);
+    }
+
+    const newNote = {
+      title: req.body.title,
+      text: req.body.text,
+      id: storedNotes.length,
+    };
+
+    storedNotes.push(newNote);
+
+    const newDB = JSON.stringify(storedNotes);
+
+    fs.writeFile("./db/db.json", newDB, (err) => {
+      if (err) throw err;
+      console.log("The file has been saved!");
+    });
+
+    res.send("your note has been saved");
+  });
+});
 
 // Defines HTML routes
 // Creates the route to return the notes.html file
