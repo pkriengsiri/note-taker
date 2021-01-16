@@ -3,20 +3,20 @@
 const express = require("express");
 const fs = require("fs");
 
-// 2. create an express instance
+// Creates an express instance
 const app = express();
 
-// 3. define the port that you're going to use
+// Defines the port that you're going to use
 const PORT = 8080 || process.env.PORT;
 
-// 4. listen to that port
+// Listens to that port 
 app.listen(PORT, () => {
     console.log("Server is running on http://localhost:"+PORT);
 });
 
-// 5. middleware: setup express to parse the request body
-//     app.use(express.urlencoded({ extended: true }));
-//     app.use(express.json());
+// Sets up middleware to parse the request body
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
 
 // 6. add routes
 
