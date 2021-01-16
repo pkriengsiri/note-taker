@@ -7,6 +7,7 @@ const fs = require("fs");
 const app = express();
 
 // 3. define the port that you're going to use
+const PORT = 8080 || process.env.PORT;
 
 // 4. listen to that port
 
