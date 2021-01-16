@@ -2,6 +2,7 @@
 // Includes required modules
 const express = require("express");
 const fs = require("fs");
+var path = require("path");
 
 // Creates an express instance
 const app = express();
@@ -11,12 +12,12 @@ const PORT = 8080 || process.env.PORT;
 
 // Listens to that port 
 app.listen(PORT, () => {
-    console.log("Server is running on http://localhost:"+PORT);
+    console.log("Server is running on http://localhost:" + PORT);
 });
 
 // Sets up middleware to parse the request body
-    app.use(express.urlencoded({ extended: true }));
-    app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // 6. add routes
 
@@ -24,7 +25,8 @@ app.listen(PORT, () => {
 
 //   * GET `/notes` - Should return the `notes.html` file.
 
-//   * GET `*` - Should return the `index.html` file
+// Creates the route to return the index.html file
+  * GET `*` - Should return the `index.html` file
 
 // * The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
 
