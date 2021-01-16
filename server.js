@@ -1,8 +1,10 @@
 
-// 1. require express
-
+// Includes required modules
+const express = require("express");
+const fs = require("fs");
 
 // 2. create an express instance
+const app = express();
 
 // 3. define the port that you're going to use
 
