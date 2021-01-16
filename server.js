@@ -23,7 +23,10 @@ app.use(express.json());
 
 // * The following HTML routes should be created:
 
-//   * GET `/notes` - Should return the `notes.html` file.
+// Creates the route to return the notes.html file
+app.get("/notes", function (req, res) {
+    res.sendFile(path.join(__dirname, "/public/notes.html"));
+});
 
 // Creates the route to return the index.html file
 app.get("*", function (req, res) {
