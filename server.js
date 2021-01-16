@@ -19,12 +19,20 @@ app.listen(PORT, () => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// 6. add routes
+// Defines API routes
+// Creates the API route for notes from the db
+app.get("/api/notes", function (req, res) {
+    console.log("accessed notes api route");
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) throw err;
+        res.send(data);
+    })
+});
 
-// * The following HTML routes should be created:
-
+// Defines HTML routes
 // Creates the route to return the notes.html file
 app.get("/notes", function (req, res) {
+    console.log("Accessed notes route");
     res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
@@ -35,9 +43,8 @@ app.get("*", function (req, res) {
 
 // * The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
 
-// * The following API routes should be created:
 
-//   * GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
+
 
 //   * POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
 
