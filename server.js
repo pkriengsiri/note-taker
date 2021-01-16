@@ -23,7 +23,7 @@ app.use(express.static(__dirname + "/public"));
 
 // Defines API routes
 
-// Creates the API route for notes from the db
+// Creates the API route for getting the stored notes
 app.get("/api/notes", function (req, res) {
   // Send the db.json file
   res.sendFile(path.join(__dirname, "/db/db.json"));
