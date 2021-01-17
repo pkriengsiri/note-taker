@@ -46,7 +46,7 @@ const editNote = (note) => {
 const renderActiveNote = () => {
   $saveNoteBtn.hide();
 
-  if (activeNote.id) {
+  if (activeNote.id >= 0) {
     $noteTitle.attr("readonly", true);
     $noteText.attr("readonly", true);
     $noteTitle.val(activeNote.title);
@@ -81,6 +81,9 @@ const handleEditSave = function () {
     id: $("#editNoteID").text()
   };
 
+  // Set the active note to be the new edited note
+  activeNote = newNote;
+
   // Hide the modal
   $("#editModal").modal("hide");
 
@@ -97,11 +100,10 @@ const handleNoteEdit = function (event) {
 
   // Grab the note that was clicked
   activeNote = $(this).parent(".list-group-item").data();
-  console.log(activeNote);
 
   // Place the note text in the text areas of the modal window
-  $("#editNoteTitle").text(activeNote.title);
-  $("#editNoteBody").text(activeNote.text);
+  $("#editNoteTitle").val(activeNote.title);
+  $("#editNoteBody").val(activeNote.text);
   $("#editNoteID").text(activeNote.id);
   
   // Show an edit modal window
