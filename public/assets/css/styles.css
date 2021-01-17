@@ -93,3 +93,25 @@ body {
   background: none;
   font-size: 1.7rem;
 }
+
+@media screen and (max-width: 1024px) {
+  .listButtons, .list-text {
+    display:block;
+  }
+
+  .listButtons {
+    text-align: center;
+    /* margin-top: 10px !important; */
+  }
+
+  .edit-note, .delete-note {
+    float:none !important;
+    margin: 10px 10px 0px 0px !important;
+    padding: 0 !important;
+    font-size: 1.3rem !important;
+  }
+
+  .note-title {
+    font-size: 1.5rem;
+  }
+}

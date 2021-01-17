@@ -99,7 +99,7 @@ const handleNoteEdit = function (event) {
   event.stopPropagation();
 
   // Grab the note that was clicked
-  activeNote = $(this).parent(".list-group-item").data();
+  activeNote = $(this).parents(".list-group-item").data();
 
   // Place the note text in the text areas of the modal window
   $("#editNoteTitle").val(activeNote.title);
@@ -115,7 +115,7 @@ const handleNoteDelete = function (event) {
   // prevents the click listener for the list from being called when the button inside of it is clicked
   event.stopPropagation();
 
-  const note = $(this).parent(".list-group-item").data();
+  const note = $(this).parents(".list-group-item").data();
 
   if (activeNote.id === note.id) {
     activeNote = {};
@@ -159,22 +159,25 @@ const renderNoteList = (notes) => {
   // unless withDeleteButton argument is provided as false
   const create$li = (text, withDeleteButton = true) => {
     const $li = $("<li class='list-group-item'>");
-    const $span = $("<span>").text(text);
+    const $span = $("<span class='list-text'>").text(text);
     $li.append($span);
-
+    const $buttonDiv = $("<span class='m-0 p-0'>");
+    $buttonDiv.attr("id","listButtons");
 
     if (withDeleteButton) {
       const $delBtn = $(
         "<i class='fas fa-trash-alt float-right text-danger delete-note mx-4'>"
       );
       $delBtn.attr("title","Delete this note");
-      $li.append($delBtn);
+      $buttonDiv.append($delBtn);
       
       const $editBtn = $(
         "<i class='fas fa-edit float-right text-info edit-note'>"
       );
       $editBtn.attr("title","Edit this note");
-      $li.append($editBtn);
+      $buttonDiv.append($editBtn)
+      
+      $li.append($buttonDiv);
 
     }
     return $li;
