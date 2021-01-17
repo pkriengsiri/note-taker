@@ -7,7 +7,7 @@ var path = require("path");
 const app = express();
 
 // Defines the port the application uses
-const PORT = 8080 || process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 // Listens to that port
 app.listen(PORT, () => {
