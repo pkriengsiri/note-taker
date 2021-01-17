@@ -3,6 +3,7 @@ const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
+const $saveEditBtn = $("#saveEdit");
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
@@ -29,6 +30,15 @@ const deleteNote = (id) => {
   return $.ajax({
     url: "api/notes/" + id,
     method: "DELETE",
+  });
+};
+
+// A function for editing a note from the db
+const editNote = (note) => {
+  return $.ajax({
+    url: "api/notes/",
+    method: "PUT",
+    data: note,
   });
 };
 
@@ -62,12 +72,37 @@ const handleNoteSave = function () {
   });
 };
 
+// Get the note data from the inputs, save it to the db and update the view
+const handleEditSave = function () {
+  // Saved the edited note in a variable
+  const newNote = {
+    title: $("#editNoteTitle").text(),
+    text: $("#editNoteBody").text(),
+    id: $("#editNoteID").text()
+  };
+
+  // Hide the modal
+  $("#editModal").modal("hide");
+
+  editNote(newNote).then(() => {
+    getAndRenderNotes();
+    renderActiveNote();
+  });
+};
+
 // Edit the clicked note
 const handleNoteEdit = function (event) {
   // prevents the click listener for the list from being called when the button inside of it is clicked
   event.stopPropagation();
 
   // Grab the note that was clicked
+  activeNote = $(this).parent(".list-group-item").data();
+  console.log(activeNote);
+
+  // Place the note text in the text areas of the modal window
+  $("#editNoteTitle").text(activeNote.title);
+  $("#editNoteBody").text(activeNote.text);
+  $("#editNoteID").text(activeNote.id);
   
   // Show an edit modal window
   $("#editModal").modal("show");
@@ -164,6 +199,7 @@ $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
 $noteList.on("click", ".edit-note", handleNoteEdit);
+$saveEditBtn.on("click", handleEditSave);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
 
