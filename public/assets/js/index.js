@@ -76,8 +76,8 @@ const handleNoteSave = function () {
 const handleEditSave = function () {
   // Saved the edited note in a variable
   const newNote = {
-    title: $("#editNoteTitle").text(),
-    text: $("#editNoteBody").text(),
+    title: $("#editNoteTitle").val(),
+    text: $("#editNoteBody").val(),
     id: $("#editNoteID").text()
   };
 
