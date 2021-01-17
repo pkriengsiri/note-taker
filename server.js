@@ -111,6 +111,44 @@ app.delete("/api/notes/:id", (req, res) => {
   });
 });
 
+// Creates the API route for editing notes
+app.put("/api/notes", (req, res) => {
+  const newNote = {
+    title: req.body.title,
+    text: req.body.text,
+    id: req.body.id,
+  };
+
+  console.log(newNote);
+
+
+
+  // // Uses fs to read db.json which contains existing notes
+  // fs.readFile("./db/db.json", "utf8", (err, data) => {
+  //   // Throw an error if there is an error
+  //   if (err) throw err;
+
+  //   // Parse the db.json contents to be an array of objects
+  //   const parsedDb = JSON.parse(data);
+
+  //   // Create a new array with the note to be deleted filtered out
+  //   const newData = parsedDb.filter((note) => note.id !== parseInt(noteID));
+
+  //   // Convert the new array back to JSON
+  //   const newDB = JSON.stringify(newData);
+
+  //   // Use fs to write the new array back to db.json
+  //   fs.writeFile("./db/db.json", newDB, (err) => {
+  //     if (err) throw err;
+  //     // Success message if the file is written
+  //     console.log("The file has been saved!");
+  //   });
+
+  //   // Send a response to resolve the delete request
+  //   res.send("your note has been deleted");
+  // });
+});
+
 //====================
 // Defines HTML routes
 //====================
