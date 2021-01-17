@@ -76,3 +76,7 @@ html, body {
 .edit-note:hover {
   color: rgb(17, 0, 92) !important;
 }
+
+.modal-header {
+  color: white;
+}
