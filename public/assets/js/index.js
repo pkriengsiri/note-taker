@@ -62,6 +62,17 @@ const handleNoteSave = function () {
   });
 };
 
+// Edit the clicked note
+const handleNoteEdit = function (event) {
+  // prevents the click listener for the list from being called when the button inside of it is clicked
+  event.stopPropagation();
+
+  // Grab the note that was clicked
+  
+  // Show an edit modal window
+  $("#editModal").modal("show");
+};
+
 // Delete the clicked note
 const handleNoteDelete = function (event) {
   // prevents the click listener for the list from being called when the button inside of it is clicked
@@ -103,7 +114,6 @@ const handleRenderSaveBtn = function () {
 
 // Render's the list of note titles
 const renderNoteList = (notes) => {
-  //notes = JSON.parse(notes);
   $noteList.empty();
 
   const noteListItems = [];
@@ -153,6 +163,7 @@ $saveNoteBtn.on("click", handleNoteSave);
 $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
+$noteList.on("click", ".edit-note", handleNoteEdit);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
 
