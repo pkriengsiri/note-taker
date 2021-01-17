@@ -58,7 +58,7 @@ html, body {
 }
 
 .list-container i {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
@@ -67,4 +67,12 @@ html, body {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+}
+
+.delete-note:hover {
+  color: rgb(148, 0, 0) !important;
+}
+
+.edit-note:hover {
+  color: rgb(17, 0, 92) !important;
 }
