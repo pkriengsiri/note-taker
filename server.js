@@ -129,7 +129,6 @@ app.put("/api/notes", (req, res) => {
 
     // Update the object in the array which has the id of the note to edit
     parsedDb.forEach((element) => {
-      console.log(element.id);
       if (element.id == parseInt(newNote.id)) {
         element.title = newNote.title;
         element.text = newNote.text;
