@@ -115,11 +115,19 @@ const renderNoteList = (notes) => {
     const $span = $("<span>").text(text);
     $li.append($span);
 
+
     if (withDeleteButton) {
       const $delBtn = $(
-        "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
+        "<i class='fas fa-trash-alt float-right text-danger delete-note mx-2'>"
       );
       $li.append($delBtn);
+      
+      const $editBtn = $(
+        "<i class='fas fa-edit float-right text-info edit-note'>"
+      );
+      
+      $li.append($editBtn);
+
     }
     return $li;
   };
