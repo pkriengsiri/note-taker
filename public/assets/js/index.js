@@ -167,12 +167,13 @@ const renderNoteList = (notes) => {
       const $delBtn = $(
         "<i class='fas fa-trash-alt float-right text-danger delete-note mx-4'>"
       );
+      $delBtn.attr("title","Delete this note");
       $li.append($delBtn);
       
       const $editBtn = $(
         "<i class='fas fa-edit float-right text-info edit-note'>"
       );
-      
+      $editBtn.attr("title","Edit this note");
       $li.append($editBtn);
 
     }
