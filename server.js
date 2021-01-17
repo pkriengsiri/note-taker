@@ -128,31 +128,26 @@ app.put("/api/notes", (req, res) => {
     const parsedDb = JSON.parse(data);
 
     // Update the object in the array which has the id of the note to edit
-    parsedDb.forEach(element => {
+    parsedDb.forEach((element) => {
       console.log(element.id);
-      if(element.id == parseInt(newNote.id)) {
+      if (element.id == parseInt(newNote.id)) {
         element.title = newNote.title;
-        console.log(element.title);
         element.text = newNote.text;
-        console.log(element.text);
       }
-    })
+    });
 
-    console.log(parsedDb);
+    // Convert the updated array back to JSON
+    const newDB = JSON.stringify(parsedDb);
 
-
-    // Convert the new array back to JSON
-    // const newDB = JSON.stringify(newData);
-
-    // // Use fs to write the new array back to db.json
-    // fs.writeFile("./db/db.json", newDB, (err) => {
-    //   if (err) throw err;
-    //   // Success message if the file is written
-    //   console.log("The file has been saved!");
-    // });
+    // Use fs to write the new array back to db.json
+    fs.writeFile("./db/db.json", newDB, (err) => {
+      if (err) throw err;
+      // Success message if the file is written
+      console.log("The file has been saved!");
+    });
 
     // // Send a response to resolve the delete request
-    res.send("your note has been deleted");
+    res.send("Your note has been updated");
   });
 });
 
