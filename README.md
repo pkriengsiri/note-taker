@@ -26,6 +26,16 @@ To deploy to Heroku, run `heroku create` then push to the newly created Heroku i
 ## Usage
 Access the application at the deployed URL: https://note-taker-dpk.herokuapp.com/
 
+* Press the pencil icon to create a note.  
+  * The note will require title and text.  
+  * When finished, click the save icon to save the note.
+* Press the red delete icon to delete a note
+* Press the blue edit icon to edit a note
+  * A new modal window will appear
+  * Edit the note title and/ or text within the new window
+  * Click the blue save icon to save changes, or click the red cancel icon to discard changes
+
+
 
 ![demo of note taker application](./screenshot/demo.gif)
 
