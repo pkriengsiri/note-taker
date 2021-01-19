@@ -7,6 +7,7 @@ This is a simple note-taking app that allows the user to create, save, edit, and
 ### Features include:
 * Backend data-persistence of user created notes
 * Ability to create, save, update and delete notes
+* Unique IDs generated for each note via npm uniqid package
 
 [Link to the repository](https://github.com/pkriengsiri/note-taker)
   
@@ -47,6 +48,7 @@ Collaborators on this project included instructional staff, TAs, and students in
 * https://expressjs.com/en/starter/static-files.html 
 * https://stackoverflow.com/questions/23662106/how-to-add-line-break-with-media-queries
 * https://stackoverflow.com/questions/45456543/make-text-show-up-on-hover-over-button/45456596
+* https://www.npmjs.com/package/uniqid
 
 
 ## License
