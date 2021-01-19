@@ -82,7 +82,6 @@ app.delete("/api/notes/:id", (req, res) => {
 
     // Create a new array with the note to be deleted filtered out
     const newData = parsedDb.filter((note) => note.id !== noteID);
-    console.log(newData);
 
     // Convert the new array back to JSON
     const newDB = JSON.stringify(newData);
